@@ -1,0 +1,164 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ assembly name="System.Data.dll" #>
+<#@ assembly name="System.Data.DataSetExtensions.dll" #>
+<#@ assembly name="System.configuration.dll" #>
+<#@ assembly name="System.Xml.dll" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Xml" #>
+#region 어셈블리 Jupiter.Components.dll, v1.0.0
+// T4템플릿으로 자동생성된 뷰모델
+#endregion
+/****************************************************************************************
+ * Copyright(c) Seungkyun,Park/박승균 (qkrtmdrbs@gmail.com)
+ * 본 소스는 저작자의 개인소유자산입니다.
+ * 본 소스를 원저작자의 허락없이 무단으로 변형,판매,가공시에는 저작권법에 위반됩니다.
+ ****************************************************************************************/
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Globalization;
+using System.Web.Mvc;
+using System.Web.Security;
+
+namespace Jupiter.Repository
+{
+<#
+string connectionString = connectionString = "Data Source=localhost;Initial Catalog=Jupiter;Persist Security Info=True;User ID=jupiter;Password=tkfkdgo";
+//System.Configuration.ConfigurationManager.ConnectionStrings["ApplicationServices"].ConnectionString;
+DataSet ds = new DataSet();
+using (SqlConnection connection = new SqlConnection(connectionString))
+{
+    SqlCommand sc = new SqlCommand();
+    sc.Connection = connection;
+    sc.CommandText = @" DECLARE @TableName varchar(255)
+						DECLARE contact_cursor CURSOR FOR SELECT [TABLE_NAME] FROM INFORMATION_SCHEMA.TABLES
+						OPEN contact_cursor
+						FETCH NEXT FROM contact_cursor INTO @TableName
+						WHILE @@FETCH_STATUS = 0
+						BEGIN
+							SELECT [TableName] = OBJECT_NAME(c.object_id), 
+								[ColumnName] = c.name, [Description] = ex.value, [Nullable] = c.is_nullable, 
+								[MaxLength] = t.max_length, [TypeName] = t.name
+							FROM sys.columns c 
+								LEFT OUTER JOIN sys.extended_properties ex 
+									ON ex.major_id = c.object_id AND ex.minor_id = c.column_id AND ex.name = 'MS_Description' 
+								INNER JOIN sys.types t
+									ON c.user_type_id = t.user_type_id
+							WHERE OBJECTPROPERTY(c.object_id, 'IsMsShipped')=0 AND OBJECT_NAME(c.object_id) = @TableName
+							ORDER BY OBJECT_NAME(c.object_id), c.column_id
+							FETCH NEXT FROM contact_cursor INTO @TableName
+						END
+						CLOSE contact_cursor
+						DEALLOCATE contact_cursor";
+
+    using (SqlDataAdapter da = new SqlDataAdapter(sc))
+    {
+        da.Fill(ds);
+    }
+}
+
+string tabltName = null;
+string tabltDescription = null;
+string maxLength = null;
+string minLength = null;
+bool isNullable = false;
+string typeName = null;
+foreach (DataTable dt in ds.Tables)
+{
+    if (dt.Rows.Count == 0 || dt.Rows[0].IsNull("Description")) continue;
+    tabltName = dt.Rows[0]["TableName"] as string;
+	if (tabltName.IndexOf("_") != -1)
+		tabltName = tabltName.Substring(tabltName.IndexOf("_") + 1);
+    tabltDescription = dt.Rows[0]["Description"] as string;
+	if (tabltDescription.IndexOf(" ") != -1)
+		tabltDescription = tabltDescription.Substring(0, tabltDescription.LastIndexOf(" "));
+#>
+    /// <summary>
+    /// <#=tabltDescription#>
+    /// </summary>
+	[Serializable]
+	public class <#=tabltName#>Model
+	{
+<#
+    foreach (DataRow dr in dt.Rows)
+    {
+#>
+        /// <summary>
+        /// <#=dr["Description"]#>
+        /// </summary>
+<#
+		maxLength = dr["MaxLength"].ToString();
+		isNullable = (dr["Nullable"].ToString() == "1");
+		minLength = isNullable ? "0" : "1";
+		typeName = GetFrameworkType(dr["TypeName"].ToString(), isNullable);
+		if (typeName == "string" && maxLength != "-1")
+		{
+#>
+		[StringLength(<#=maxLength#>, ErrorMessage = "\"{0}\"필드는 {2}자 이상 {1}자 이하로 작성해 주십시오.", MinimumLength = <#=minLength#>)]
+<#
+		}
+		if (typeName == "DateTime")
+		{
+#>
+		[DisplayFormat(DataFormatString="yyyy-MM-dd")]
+<#
+		}
+		if (!isNullable)
+		{
+#>
+		[Required(ErrorMessage="필수 입력 값입니다.")]
+<#
+		}
+#>
+		[Display(Name = "<#=dr["Description"]#>")]
+		public <#=typeName#> <#=dr["ColumnName"]#> { get; set; }
+
+<#
+    }
+#>
+	}
+<#
+}
+#>
+}
+<#+
+	private string GetFrameworkType(string dbTypeName, bool isNullable)
+	{
+		string typeName = "string";
+		switch (dbTypeName)
+		{
+			case "datetime":
+			case "datetime2":
+			case "smalldatetime":
+				typeName = "DateTime"; break;
+			case "time": 
+			case "timestamp": 
+				typeName = "TimeSpan"; break;
+			case "tinyint": typeName = "Byte"; break;
+			case "smallint": typeName = "Int16"; break;
+			case "int": typeName = "Int32"; break;
+			case "bigint": typeName = "Int64"; break;
+			case "uniqueidentifier": typeName = "Guid"; break;
+			case "real":
+			case "money":
+			case "decimal":
+			case "numeric":
+				typeName = "Double"; break;
+			case "float": 
+			case "smallmoney":
+				typeName = "string"; break;
+			case "bit": typeName = "bool"; break;
+		}
+
+		if (typeName != "string" && isNullable)
+		{
+			typeName = String.Format("Nullable<{0}>", typeName);
+		}
+
+		return typeName;
+	}
+#>

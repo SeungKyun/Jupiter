@@ -1,0 +1,67 @@
+﻿@model Jupiter.Components.DBModels.common_Exceptions
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>common_Exceptions</legend>
+
+    <div class="display-label">Message</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Message)
+    </div>
+
+    <div class="display-label">Source</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Source)
+    </div>
+
+    <div class="display-label">StackTrace</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StackTrace)
+    </div>
+
+    <div class="display-label">UserName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserName)
+    </div>
+
+    <div class="display-label">Url</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Url)
+    </div>
+
+    <div class="display-label">UrlReferrer</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UrlReferrer)
+    </div>
+
+    <div class="display-label">UserHostName</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserHostName)
+    </div>
+
+    <div class="display-label">UserHostAddress</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserHostAddress)
+    </div>
+
+    <div class="display-label">CreateDate</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreateDate)
+    </div>
+
+    <div class="display-label">State</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.common_Exceptions_State.Name)
+        @Html.Action("ExceptionHandleList", "Exception", new { id = Model.Id })
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,115 @@
+﻿@model Jupiter.Components.ViewModels.RegisterModel
+@{
+    ViewBag.Title = "Register";
+}
+<h2>새 계정 만들기</h2>
+<p>
+    새 계정을 만들려면 아래 폼을 사용하십시오.
+</p>
+<p>
+    암호는 (@Membership.MinRequiredPasswordLength)자 이상이어야 합니다.
+</p>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "Account creation was unsuccessful. Please correct the errors and try again.")
+    <div>
+        <fieldset>
+            <legend>계정 정보</legend>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.UserName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.UserName) @Html.ValidationMessageFor(model => model.UserName)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Password)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Password) @Html.ValidationMessageFor(model => model.Password)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ConfirmPassword)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ConfirmPassword) @Html.ValidationMessageFor(model => model.ConfirmPassword)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.RealName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.RealName) @Html.ValidationMessageFor(model => model.RealName)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Gender)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Gender) @Html.ValidationMessageFor(model => model.Gender)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.HomePhone)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.HomePhone) @Html.ValidationMessageFor(model => model.HomePhone)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.MobilePIN)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.MobilePIN) @Html.ValidationMessageFor(model => model.MobilePIN)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Email)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Email) @Html.ValidationMessageFor(model => model.Email)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Post)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Post) @Html.ValidationMessageFor(model => model.Post)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Address)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Address) @Html.ValidationMessageFor(model => model.Address)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.SchoolName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.SchoolName) @Html.ValidationMessageFor(model => model.SchoolName)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.SchoolGrade)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.SchoolGrade) @Html.ValidationMessageFor(model => model.SchoolGrade)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Comment)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Comment) @Html.ValidationMessageFor(model=> model.Comment)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ChurchName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ChurchName) @Html.ValidationMessageFor(model=> model.ChurchName)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ChurchRole)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ChurchRole) @Html.ValidationMessageFor(model => model.ChurchRole)
+            </div>
+            <p>
+                <input type="submit" value="Register" />
+            </p>
+        </fieldset>
+    </div>
+}

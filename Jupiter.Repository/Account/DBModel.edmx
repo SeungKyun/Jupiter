@@ -1,0 +1,655 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="JupiterModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="JupiterModelStoreContainer">
+          <EntitySet Name="aspnet_Applications" EntityType="JupiterModel.Store.aspnet_Applications" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Membership" EntityType="JupiterModel.Store.aspnet_Membership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Membership_Class" EntityType="JupiterModel.Store.aspnet_Membership_Class" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Membership_Extend" EntityType="JupiterModel.Store.aspnet_Membership_Extend" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Membership_Grade" EntityType="JupiterModel.Store.aspnet_Membership_Grade" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Roles" EntityType="JupiterModel.Store.aspnet_Roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Users" EntityType="JupiterModel.Store.aspnet_Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_UsersInRoles" EntityType="JupiterModel.Store.aspnet_UsersInRoles" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__aspnet_Me__Appli__21B6055D" Association="JupiterModel.Store.FK__aspnet_Me__Appli__21B6055D">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Me__UserI__22AA2996" Association="JupiterModel.Store.FK__aspnet_Me__UserI__22AA2996">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Ro__Appli__440B1D61" Association="JupiterModel.Store.FK__aspnet_Ro__Appli__440B1D61">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Us__Appli__0DAF0CB0" Association="JupiterModel.Store.FK__aspnet_Us__Appli__0DAF0CB0">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Us__RoleI__4AB81AF0" Association="JupiterModel.Store.FK__aspnet_Us__RoleI__4AB81AF0">
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+            <End Role="aspnet_UsersInRoles" EntitySet="aspnet_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Us__UserI__49C3F6B7" Association="JupiterModel.Store.FK__aspnet_Us__UserI__49C3F6B7">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_UsersInRoles" EntitySet="aspnet_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Membership_Class_aspnet_Membership_Grade" Association="JupiterModel.Store.FK_aspnet_Membership_Class_aspnet_Membership_Grade">
+            <End Role="aspnet_Membership_Grade" EntitySet="aspnet_Membership_Grade" />
+            <End Role="aspnet_Membership_Class" EntitySet="aspnet_Membership_Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Membership_Extend_aspnet_Membership" Association="JupiterModel.Store.FK_aspnet_Membership_Extend_aspnet_Membership">
+            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+            <End Role="aspnet_Membership_Extend" EntitySet="aspnet_Membership_Extend" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Membership_Extend_Class" Association="JupiterModel.Store.FK_aspnet_Membership_Extend_Class">
+            <End Role="aspnet_Membership_Class" EntitySet="aspnet_Membership_Class" />
+            <End Role="aspnet_Membership_Extend" EntitySet="aspnet_Membership_Extend" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="aspnet_Applications">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="LoweredApplicationName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="aspnet_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="PasswordFormat" Type="int" Nullable="false" />
+          <Property Name="PasswordSalt" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="MobilePIN" Type="nvarchar" MaxLength="16" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="LoweredEmail" Type="nvarchar" MaxLength="256" />
+          <Property Name="PasswordQuestion" Type="nvarchar" MaxLength="256" />
+          <Property Name="PasswordAnswer" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsApproved" Type="bit" Nullable="false" />
+          <Property Name="IsLockedOut" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLoginDate" Type="datetime" Nullable="false" />
+          <Property Name="LastPasswordChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLockoutDate" Type="datetime" Nullable="false" />
+          <Property Name="FailedPasswordAttemptCount" Type="int" Nullable="false" />
+          <Property Name="FailedPasswordAttemptWindowStart" Type="datetime" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptCount" Type="int" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="datetime" Nullable="false" />
+          <Property Name="Comment" Type="ntext" />
+        </EntityType>
+        <EntityType Name="aspnet_Membership_Class">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" Nullable="false" />
+          <Property Name="GradeId" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="aspnet_Membership_Extend">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClassId" Type="tinyint" />
+          <Property Name="Post" Type="char" MaxLength="7" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="SchoolName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SchoolGrade" Type="char" MaxLength="1" />
+          <Property Name="HomePhone" Type="nvarchar" MaxLength="16" />
+          <Property Name="ChurchName" Type="nvarchar" MaxLength="30" />
+          <Property Name="ChurchRole" Type="nvarchar" MaxLength="30" />
+          <Property Name="Gender" Type="nchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="aspnet_Membership_Grade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="aspnet_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="LoweredRoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="Description" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="aspnet_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="LoweredUserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="RealName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="MobileAlias" Type="nvarchar" MaxLength="16" />
+          <Property Name="IsAnonymous" Type="bit" Nullable="false" />
+          <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnet_UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__aspnet_Me__Appli__21B6055D">
+          <End Role="aspnet_Applications" Type="JupiterModel.Store.aspnet_Applications" Multiplicity="1" />
+          <End Role="aspnet_Membership" Type="JupiterModel.Store.aspnet_Membership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="aspnet_Membership">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Me__UserI__22AA2996">
+          <End Role="aspnet_Users" Type="JupiterModel.Store.aspnet_Users" Multiplicity="1" />
+          <End Role="aspnet_Membership" Type="JupiterModel.Store.aspnet_Membership" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Membership">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Ro__Appli__440B1D61">
+          <End Role="aspnet_Applications" Type="JupiterModel.Store.aspnet_Applications" Multiplicity="1" />
+          <End Role="aspnet_Roles" Type="JupiterModel.Store.aspnet_Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="aspnet_Roles">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Us__Appli__0DAF0CB0">
+          <End Role="aspnet_Applications" Type="JupiterModel.Store.aspnet_Applications" Multiplicity="1" />
+          <End Role="aspnet_Users" Type="JupiterModel.Store.aspnet_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="aspnet_Users">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Us__RoleI__4AB81AF0">
+          <End Role="aspnet_Roles" Type="JupiterModel.Store.aspnet_Roles" Multiplicity="1" />
+          <End Role="aspnet_UsersInRoles" Type="JupiterModel.Store.aspnet_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="aspnet_UsersInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Us__UserI__49C3F6B7">
+          <End Role="aspnet_Users" Type="JupiterModel.Store.aspnet_Users" Multiplicity="1" />
+          <End Role="aspnet_UsersInRoles" Type="JupiterModel.Store.aspnet_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_UsersInRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Membership_Class_aspnet_Membership_Grade">
+          <End Role="aspnet_Membership_Grade" Type="JupiterModel.Store.aspnet_Membership_Grade" Multiplicity="1" />
+          <End Role="aspnet_Membership_Class" Type="JupiterModel.Store.aspnet_Membership_Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Membership_Grade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aspnet_Membership_Class">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Membership_Extend_aspnet_Membership">
+          <End Role="aspnet_Membership" Type="JupiterModel.Store.aspnet_Membership" Multiplicity="1" />
+          <End Role="aspnet_Membership_Extend" Type="JupiterModel.Store.aspnet_Membership_Extend" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Membership">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Membership_Extend">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Membership_Extend_Class">
+          <End Role="aspnet_Membership_Class" Type="JupiterModel.Store.aspnet_Membership_Class" Multiplicity="0..1" />
+          <End Role="aspnet_Membership_Extend" Type="JupiterModel.Store.aspnet_Membership_Extend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Membership_Class">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aspnet_Membership_Extend">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="aspnet_Membership_GetAllUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ApplicationName" Type="nvarchar" Mode="In" />
+          <Parameter Name="PageIndex" Type="int" Mode="In" />
+          <Parameter Name="PageSize" Type="int" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="JupiterModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="AccountEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="aspnet_Applications" EntityType="JupiterModel.aspnet_Applications" />
+          <EntitySet Name="aspnet_Membership" EntityType="JupiterModel.aspnet_Membership" />
+          <EntitySet Name="aspnet_Membership_Class" EntityType="JupiterModel.aspnet_Membership_Class" />
+          <EntitySet Name="aspnet_Membership_Extend" EntityType="JupiterModel.aspnet_Membership_Extend" />
+          <EntitySet Name="aspnet_Membership_Grade" EntityType="JupiterModel.aspnet_Membership_Grade" />
+          <EntitySet Name="aspnet_Roles" EntityType="JupiterModel.aspnet_Roles" />
+          <EntitySet Name="aspnet_Users" EntityType="JupiterModel.aspnet_Users" />
+          <AssociationSet Name="FK__aspnet_Me__Appli__21B6055D" Association="JupiterModel.FK__aspnet_Me__Appli__21B6055D">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Ro__Appli__440B1D61" Association="JupiterModel.FK__aspnet_Ro__Appli__440B1D61">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Us__Appli__0DAF0CB0" Association="JupiterModel.FK__aspnet_Us__Appli__0DAF0CB0">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Me__UserI__22AA2996" Association="JupiterModel.FK__aspnet_Me__UserI__22AA2996">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Membership_Extend_aspnet_Membership" Association="JupiterModel.FK_aspnet_Membership_Extend_aspnet_Membership">
+            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+            <End Role="aspnet_Membership_Extend" EntitySet="aspnet_Membership_Extend" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Membership_Class_aspnet_Membership_Grade" Association="JupiterModel.FK_aspnet_Membership_Class_aspnet_Membership_Grade">
+            <End Role="aspnet_Membership_Grade" EntitySet="aspnet_Membership_Grade" />
+            <End Role="aspnet_Membership_Class" EntitySet="aspnet_Membership_Class" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aspnet_Membership_Extend_Class" Association="JupiterModel.FK_aspnet_Membership_Extend_Class">
+            <End Role="aspnet_Membership_Class" EntitySet="aspnet_Membership_Class" />
+            <End Role="aspnet_Membership_Extend" EntitySet="aspnet_Membership_Extend" />
+          </AssociationSet>
+          <AssociationSet Name="aspnet_UsersInRoles" Association="JupiterModel.aspnet_UsersInRoles">
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+          </AssociationSet>
+          <FunctionImport Name="aspnet_Membership_GetAllUsers" EntitySet="aspnet_Membership" ReturnType="Collection(JupiterModel.aspnet_Membership)">
+            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+            <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+            <Parameter Name="PageSize" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="aspnet_Applications">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="LoweredApplicationName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="aspnet_Membership" Relationship="JupiterModel.FK__aspnet_Me__Appli__21B6055D" FromRole="aspnet_Applications" ToRole="aspnet_Membership" />
+          <NavigationProperty Name="aspnet_Roles" Relationship="JupiterModel.FK__aspnet_Ro__Appli__440B1D61" FromRole="aspnet_Applications" ToRole="aspnet_Roles" />
+          <NavigationProperty Name="aspnet_Users" Relationship="JupiterModel.FK__aspnet_Us__Appli__0DAF0CB0" FromRole="aspnet_Applications" ToRole="aspnet_Users" />
+        </EntityType>
+        <EntityType Name="aspnet_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordFormat" Type="Int32" Nullable="false" />
+          <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="MobilePIN" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="LoweredEmail" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordQuestion" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordAnswer" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" />
+          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" />
+          <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" />
+          <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" />
+          <Property Name="FailedPasswordAttemptCount" Type="Int32" Nullable="false" />
+          <Property Name="FailedPasswordAttemptWindowStart" Type="DateTime" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptCount" Type="Int32" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="DateTime" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="aspnet_Applications" Relationship="JupiterModel.FK__aspnet_Me__Appli__21B6055D" FromRole="aspnet_Membership" ToRole="aspnet_Applications" />
+          <NavigationProperty Name="aspnet_Users" Relationship="JupiterModel.FK__aspnet_Me__UserI__22AA2996" FromRole="aspnet_Membership" ToRole="aspnet_Users" />
+          <NavigationProperty Name="aspnet_Membership_Extend" Relationship="JupiterModel.FK_aspnet_Membership_Extend_aspnet_Membership" FromRole="aspnet_Membership" ToRole="aspnet_Membership_Extend" />
+        </EntityType>
+        <EntityType Name="aspnet_Membership_Class">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" />
+          <Property Name="GradeId" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="aspnet_Membership_Grade" Relationship="JupiterModel.FK_aspnet_Membership_Class_aspnet_Membership_Grade" FromRole="aspnet_Membership_Class" ToRole="aspnet_Membership_Grade" />
+          <NavigationProperty Name="aspnet_Membership_Extend" Relationship="JupiterModel.FK_aspnet_Membership_Extend_Class" FromRole="aspnet_Membership_Class" ToRole="aspnet_Membership_Extend" />
+        </EntityType>
+        <EntityType Name="aspnet_Membership_Extend">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="ClassId" Type="Byte" />
+          <Property Name="Post" Type="String" MaxLength="7" Unicode="false" FixedLength="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="SchoolName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SchoolGrade" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="HomePhone" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="ChurchName" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="ChurchRole" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Gender" Type="String" MaxLength="1" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="aspnet_Membership" Relationship="JupiterModel.FK_aspnet_Membership_Extend_aspnet_Membership" FromRole="aspnet_Membership_Extend" ToRole="aspnet_Membership" />
+          <NavigationProperty Name="aspnet_Membership_Class" Relationship="JupiterModel.FK_aspnet_Membership_Extend_Class" FromRole="aspnet_Membership_Extend" ToRole="aspnet_Membership_Class" />
+        </EntityType>
+        <EntityType Name="aspnet_Membership_Grade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="aspnet_Membership_Class" Relationship="JupiterModel.FK_aspnet_Membership_Class_aspnet_Membership_Grade" FromRole="aspnet_Membership_Grade" ToRole="aspnet_Membership_Class" />
+        </EntityType>
+        <EntityType Name="aspnet_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="RoleId" Type="Guid" Nullable="false" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="LoweredRoleName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="aspnet_Applications" Relationship="JupiterModel.FK__aspnet_Ro__Appli__440B1D61" FromRole="aspnet_Roles" ToRole="aspnet_Applications" />
+          <NavigationProperty Name="aspnet_Users" Relationship="JupiterModel.aspnet_UsersInRoles" FromRole="aspnet_Roles" ToRole="aspnet_Users" />
+        </EntityType>
+        <EntityType Name="aspnet_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="LoweredUserName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <Property Name="RealName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MobileAlias" Type="String" MaxLength="16" Unicode="true" FixedLength="false" />
+          <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="aspnet_Applications" Relationship="JupiterModel.FK__aspnet_Us__Appli__0DAF0CB0" FromRole="aspnet_Users" ToRole="aspnet_Applications" />
+          <NavigationProperty Name="aspnet_Membership" Relationship="JupiterModel.FK__aspnet_Me__UserI__22AA2996" FromRole="aspnet_Users" ToRole="aspnet_Membership" />
+          <NavigationProperty Name="aspnet_Roles" Relationship="JupiterModel.aspnet_UsersInRoles" FromRole="aspnet_Users" ToRole="aspnet_Roles" />
+        </EntityType>
+        <Association Name="FK__aspnet_Me__Appli__21B6055D">
+          <End Role="aspnet_Applications" Type="JupiterModel.aspnet_Applications" Multiplicity="1" />
+          <End Role="aspnet_Membership" Type="JupiterModel.aspnet_Membership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="aspnet_Membership">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Ro__Appli__440B1D61">
+          <End Role="aspnet_Applications" Type="JupiterModel.aspnet_Applications" Multiplicity="1" />
+          <End Role="aspnet_Roles" Type="JupiterModel.aspnet_Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="aspnet_Roles">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Us__Appli__0DAF0CB0">
+          <End Role="aspnet_Applications" Type="JupiterModel.aspnet_Applications" Multiplicity="1" />
+          <End Role="aspnet_Users" Type="JupiterModel.aspnet_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="aspnet_Users">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Me__UserI__22AA2996">
+          <End Role="aspnet_Users" Type="JupiterModel.aspnet_Users" Multiplicity="1" />
+          <End Role="aspnet_Membership" Type="JupiterModel.aspnet_Membership" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Membership">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Membership_Extend_aspnet_Membership">
+          <End Role="aspnet_Membership" Type="JupiterModel.aspnet_Membership" Multiplicity="1" />
+          <End Role="aspnet_Membership_Extend" Type="JupiterModel.aspnet_Membership_Extend" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Membership">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Membership_Extend">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Membership_Class_aspnet_Membership_Grade">
+          <End Role="aspnet_Membership_Grade" Type="JupiterModel.aspnet_Membership_Grade" Multiplicity="1" />
+          <End Role="aspnet_Membership_Class" Type="JupiterModel.aspnet_Membership_Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Membership_Grade">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aspnet_Membership_Class">
+              <PropertyRef Name="GradeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aspnet_Membership_Extend_Class">
+          <End Role="aspnet_Membership_Class" Type="JupiterModel.aspnet_Membership_Class" Multiplicity="0..1" />
+          <End Role="aspnet_Membership_Extend" Type="JupiterModel.aspnet_Membership_Extend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Membership_Class">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aspnet_Membership_Extend">
+              <PropertyRef Name="ClassId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="aspnet_UsersInRoles">
+          <End Role="aspnet_Roles" Type="JupiterModel.aspnet_Roles" Multiplicity="*" />
+          <End Role="aspnet_Users" Type="JupiterModel.aspnet_Users" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="JupiterModelStoreContainer" CdmEntityContainer="AccountEntities">
+          <EntitySetMapping Name="aspnet_Applications"><EntityTypeMapping TypeName="JupiterModel.aspnet_Applications"><MappingFragment StoreEntitySet="aspnet_Applications">
+            <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+            <ScalarProperty Name="LoweredApplicationName" ColumnName="LoweredApplicationName" />
+            <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Membership"><EntityTypeMapping TypeName="JupiterModel.aspnet_Membership"><MappingFragment StoreEntitySet="aspnet_Membership">
+            <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+            <ScalarProperty Name="PasswordFormat" ColumnName="PasswordFormat" />
+            <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+            <ScalarProperty Name="MobilePIN" ColumnName="MobilePIN" />
+            <ScalarProperty Name="Email" ColumnName="Email" />
+            <ScalarProperty Name="LoweredEmail" ColumnName="LoweredEmail" />
+            <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
+            <ScalarProperty Name="PasswordAnswer" ColumnName="PasswordAnswer" />
+            <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+            <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+            <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+            <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+            <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+            <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+            <ScalarProperty Name="FailedPasswordAttemptCount" ColumnName="FailedPasswordAttemptCount" />
+            <ScalarProperty Name="FailedPasswordAttemptWindowStart" ColumnName="FailedPasswordAttemptWindowStart" />
+            <ScalarProperty Name="FailedPasswordAnswerAttemptCount" ColumnName="FailedPasswordAnswerAttemptCount" />
+            <ScalarProperty Name="FailedPasswordAnswerAttemptWindowStart" ColumnName="FailedPasswordAnswerAttemptWindowStart" />
+            <ScalarProperty Name="Comment" ColumnName="Comment" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Membership_Class"><EntityTypeMapping TypeName="JupiterModel.aspnet_Membership_Class"><MappingFragment StoreEntitySet="aspnet_Membership_Class">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="GradeId" ColumnName="GradeId" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Membership_Extend"><EntityTypeMapping TypeName="JupiterModel.aspnet_Membership_Extend"><MappingFragment StoreEntitySet="aspnet_Membership_Extend">
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+            <ScalarProperty Name="Post" ColumnName="Post" />
+            <ScalarProperty Name="Address" ColumnName="Address" />
+            <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+            <ScalarProperty Name="SchoolGrade" ColumnName="SchoolGrade" />
+            <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+            <ScalarProperty Name="ChurchName" ColumnName="ChurchName" />
+            <ScalarProperty Name="ChurchRole" ColumnName="ChurchRole" />
+            <ScalarProperty Name="Gender" ColumnName="Gender" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Membership_Grade"><EntityTypeMapping TypeName="JupiterModel.aspnet_Membership_Grade"><MappingFragment StoreEntitySet="aspnet_Membership_Grade">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Roles"><EntityTypeMapping TypeName="JupiterModel.aspnet_Roles"><MappingFragment StoreEntitySet="aspnet_Roles">
+            <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+            <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+            <ScalarProperty Name="LoweredRoleName" ColumnName="LoweredRoleName" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Users"><EntityTypeMapping TypeName="JupiterModel.aspnet_Users"><MappingFragment StoreEntitySet="aspnet_Users">
+            <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="UserName" ColumnName="UserName" />
+            <ScalarProperty Name="LoweredUserName" ColumnName="LoweredUserName" />
+            <ScalarProperty Name="RealName" ColumnName="RealName" />
+            <ScalarProperty Name="MobileAlias" ColumnName="MobileAlias" />
+            <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
+            <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="aspnet_UsersInRoles" TypeName="JupiterModel.aspnet_UsersInRoles" StoreEntitySet="aspnet_UsersInRoles">
+            <EndProperty Name="aspnet_Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="aspnet_Users">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetAllUsers" FunctionName="JupiterModel.Store.aspnet_Membership_GetAllUsers" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DBModel">
+        <EntityTypeShape EntityType="JupiterModel.aspnet_Applications" Width="1.5" PointX="0.75" PointY="5.5" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="JupiterModel.aspnet_Membership" Width="1.5" PointX="3" PointY="3.875" Height="5.634013671875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JupiterModel.aspnet_Membership_Class" Width="1.5" PointX="3" PointY="0.75" Height="1.9802864583333326" IsExpanded="true" />
+        <EntityTypeShape EntityType="JupiterModel.aspnet_Membership_Extend" Width="1.5" PointX="5.25" PointY="4.125" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="JupiterModel.aspnet_Membership_Grade" Width="1.5" PointX="0.75" PointY="3.125" Height="1.5956835937499991" IsExpanded="true" />
+        <EntityTypeShape EntityType="JupiterModel.aspnet_Roles" Width="1.5" PointX="3" PointY="12" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="JupiterModel.aspnet_Users" Width="1.5" PointX="5.25" PointY="8.375" Height="3.1340950520833317" IsExpanded="true" />
+        <AssociationConnector Association="JupiterModel.FK__aspnet_Me__Appli__21B6055D" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="6.6824446614583337" />
+          <ConnectorPoint PointX="3" PointY="6.6824446614583337" />
+        </AssociationConnector>
+        <AssociationConnector Association="JupiterModel.FK__aspnet_Ro__Appli__440B1D61" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="7.8648893229166674" />
+          <ConnectorPoint PointX="1.5" PointY="13.182444661458334" />
+          <ConnectorPoint PointX="3" PointY="13.182444661458334" />
+        </AssociationConnector>
+        <AssociationConnector Association="JupiterModel.FK__aspnet_Us__Appli__0DAF0CB0" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.9062525" PointY="7.8648893229166674" />
+          <ConnectorPoint PointX="1.9062525" PointY="10.540304361979166" />
+          <ConnectorPoint PointX="5.25" PointY="10.540304361979166" />
+        </AssociationConnector>
+        <AssociationConnector Association="JupiterModel.FK__aspnet_Me__UserI__22AA2996" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.25" PointY="8.9420068359375" />
+          <ConnectorPoint PointX="4.5" PointY="8.9420068359375" />
+        </AssociationConnector>
+        <AssociationConnector Association="JupiterModel.FK_aspnet_Membership_Extend_aspnet_Membership" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="5.7881982421875" />
+          <ConnectorPoint PointX="5.25" PointY="5.7881982421875" />
+        </AssociationConnector>
+        <AssociationConnector Association="JupiterModel.FK_aspnet_Membership_Class_aspnet_Membership_Grade" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="3.125" />
+          <ConnectorPoint PointX="1.5" PointY="1.7401432291666663" />
+          <ConnectorPoint PointX="3" PointY="1.7401432291666663" />
+        </AssociationConnector>
+        <AssociationConnector Association="JupiterModel.FK_aspnet_Membership_Extend_Class" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="1.7401432291666663" />
+          <ConnectorPoint PointX="6" PointY="1.7401432291666663" />
+          <ConnectorPoint PointX="6" PointY="4.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="JupiterModel.aspnet_UsersInRoles" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="13.182444661458334" />
+          <ConnectorPoint PointX="6" PointY="13.182444661458334" />
+          <ConnectorPoint PointX="6" PointY="11.509095052083332" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

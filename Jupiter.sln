@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jupiter", "Jupiter\Jupiter.csproj", "{A8E7C27E-7E58-484E-9535-5EDBEB59D18F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jupiter.Tests", "Jupiter.Tests\Jupiter.Tests.csproj", "{5E6AF97C-F2A2-4EAB-B132-F17B6517D13D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jupiter.Repository", "Jupiter.Repository\Jupiter.Repository.csproj", "{8E59573F-1A3A-4CA3-8685-F414EFA44DF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jupiter.Extensions", "Jupiter.Extensions\Jupiter.Extensions.csproj", "{15E4A6D8-E2BA-4175-BBBA-4A7814BC5072}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8E7C27E-7E58-484E-9535-5EDBEB59D18F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8E7C27E-7E58-484E-9535-5EDBEB59D18F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8E7C27E-7E58-484E-9535-5EDBEB59D18F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8E7C27E-7E58-484E-9535-5EDBEB59D18F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E6AF97C-F2A2-4EAB-B132-F17B6517D13D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E6AF97C-F2A2-4EAB-B132-F17B6517D13D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E6AF97C-F2A2-4EAB-B132-F17B6517D13D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E6AF97C-F2A2-4EAB-B132-F17B6517D13D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E59573F-1A3A-4CA3-8685-F414EFA44DF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E59573F-1A3A-4CA3-8685-F414EFA44DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E59573F-1A3A-4CA3-8685-F414EFA44DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E59573F-1A3A-4CA3-8685-F414EFA44DF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15E4A6D8-E2BA-4175-BBBA-4A7814BC5072}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15E4A6D8-E2BA-4175-BBBA-4A7814BC5072}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15E4A6D8-E2BA-4175-BBBA-4A7814BC5072}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15E4A6D8-E2BA-4175-BBBA-4A7814BC5072}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

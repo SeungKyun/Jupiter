@@ -1,0 +1,100 @@
+﻿@model Jupiter.Components.DBModels.common_Exceptions
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>common_Exceptions</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Message)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Message)
+            @Html.ValidationMessageFor(model => model.Message)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Source)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Source)
+            @Html.ValidationMessageFor(model => model.Source)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StackTrace)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StackTrace)
+            @Html.ValidationMessageFor(model => model.StackTrace)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserName)
+            @Html.ValidationMessageFor(model => model.UserName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Url)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Url)
+            @Html.ValidationMessageFor(model => model.Url)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UrlReferrer)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UrlReferrer)
+            @Html.ValidationMessageFor(model => model.UrlReferrer)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserHostName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserHostName)
+            @Html.ValidationMessageFor(model => model.UserHostName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserHostAddress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserHostAddress)
+            @Html.ValidationMessageFor(model => model.UserHostAddress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CreateDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CreateDate)
+            @Html.ValidationMessageFor(model => model.CreateDate)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
