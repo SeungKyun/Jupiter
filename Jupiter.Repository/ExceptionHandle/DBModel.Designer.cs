@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM 관계 메타데이터
@@ -120,6 +121,7 @@ namespace Jupiter.Repository.ExceptionHandle
         private ObjectSet<common_Exceptions_State> _common_Exceptions_State;
 
         #endregion
+
         #region AddTo 메서드
     
         /// <summary>
@@ -147,11 +149,11 @@ namespace Jupiter.Repository.ExceptionHandle
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region 엔터티
     
     /// <summary>
@@ -180,7 +182,8 @@ namespace Jupiter.Repository.ExceptionHandle
         }
 
         #endregion
-        #region 기본 속성
+
+        #region 단순 속성
     
         /// <summary>
         /// 사용 가능한 메타데이터 설명서가 없습니다.
@@ -199,7 +202,7 @@ namespace Jupiter.Repository.ExceptionHandle
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -224,7 +227,7 @@ namespace Jupiter.Repository.ExceptionHandle
             {
                 OnMessageChanging(value);
                 ReportPropertyChanging("Message");
-                _Message = StructuralObject.SetValidValue(value, true);
+                _Message = StructuralObject.SetValidValue(value, true, "Message");
                 ReportPropertyChanged("Message");
                 OnMessageChanged();
             }
@@ -248,7 +251,7 @@ namespace Jupiter.Repository.ExceptionHandle
             {
                 OnSourceChanging(value);
                 ReportPropertyChanging("Source");
-                _Source = StructuralObject.SetValidValue(value, true);
+                _Source = StructuralObject.SetValidValue(value, true, "Source");
                 ReportPropertyChanged("Source");
                 OnSourceChanged();
             }
@@ -272,7 +275,7 @@ namespace Jupiter.Repository.ExceptionHandle
             {
                 OnStackTraceChanging(value);
                 ReportPropertyChanging("StackTrace");
-                _StackTrace = StructuralObject.SetValidValue(value, true);
+                _StackTrace = StructuralObject.SetValidValue(value, true, "StackTrace");
                 ReportPropertyChanged("StackTrace");
                 OnStackTraceChanged();
             }
@@ -296,7 +299,7 @@ namespace Jupiter.Repository.ExceptionHandle
             {
                 OnUserNameChanging(value);
                 ReportPropertyChanging("UserName");
-                _UserName = StructuralObject.SetValidValue(value, true);
+                _UserName = StructuralObject.SetValidValue(value, true, "UserName");
                 ReportPropertyChanged("UserName");
                 OnUserNameChanged();
             }
@@ -320,7 +323,7 @@ namespace Jupiter.Repository.ExceptionHandle
             {
                 OnUrlChanging(value);
                 ReportPropertyChanging("Url");
-                _Url = StructuralObject.SetValidValue(value, true);
+                _Url = StructuralObject.SetValidValue(value, true, "Url");
                 ReportPropertyChanged("Url");
                 OnUrlChanged();
             }
@@ -344,7 +347,7 @@ namespace Jupiter.Repository.ExceptionHandle
             {
                 OnUrlReferrerChanging(value);
                 ReportPropertyChanging("UrlReferrer");
-                _UrlReferrer = StructuralObject.SetValidValue(value, true);
+                _UrlReferrer = StructuralObject.SetValidValue(value, true, "UrlReferrer");
                 ReportPropertyChanged("UrlReferrer");
                 OnUrlReferrerChanged();
             }
@@ -368,7 +371,7 @@ namespace Jupiter.Repository.ExceptionHandle
             {
                 OnUserHostNameChanging(value);
                 ReportPropertyChanging("UserHostName");
-                _UserHostName = StructuralObject.SetValidValue(value, true);
+                _UserHostName = StructuralObject.SetValidValue(value, true, "UserHostName");
                 ReportPropertyChanged("UserHostName");
                 OnUserHostNameChanged();
             }
@@ -392,7 +395,7 @@ namespace Jupiter.Repository.ExceptionHandle
             {
                 OnUserHostAddressChanging(value);
                 ReportPropertyChanging("UserHostAddress");
-                _UserHostAddress = StructuralObject.SetValidValue(value, true);
+                _UserHostAddress = StructuralObject.SetValidValue(value, true, "UserHostAddress");
                 ReportPropertyChanged("UserHostAddress");
                 OnUserHostAddressChanged();
             }
@@ -416,7 +419,7 @@ namespace Jupiter.Repository.ExceptionHandle
             {
                 OnCreateDateChanging(value);
                 ReportPropertyChanging("CreateDate");
-                _CreateDate = StructuralObject.SetValidValue(value);
+                _CreateDate = StructuralObject.SetValidValue(value, "CreateDate");
                 ReportPropertyChanged("CreateDate");
                 OnCreateDateChanged();
             }
@@ -440,7 +443,7 @@ namespace Jupiter.Repository.ExceptionHandle
             {
                 OnExceptions_StateIdChanging(value);
                 ReportPropertyChanging("Exceptions_StateId");
-                _Exceptions_StateId = StructuralObject.SetValidValue(value);
+                _Exceptions_StateId = StructuralObject.SetValidValue(value, "Exceptions_StateId");
                 ReportPropertyChanged("Exceptions_StateId");
                 OnExceptions_StateIdChanged();
             }
@@ -450,7 +453,7 @@ namespace Jupiter.Repository.ExceptionHandle
         partial void OnExceptions_StateIdChanged();
 
         #endregion
-    
+
         #region 탐색 속성
     
         /// <summary>
@@ -514,6 +517,7 @@ namespace Jupiter.Repository.ExceptionHandle
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -546,7 +550,8 @@ namespace Jupiter.Repository.ExceptionHandle
         }
 
         #endregion
-        #region 기본 속성
+
+        #region 단순 속성
     
         /// <summary>
         /// 사용 가능한 메타데이터 설명서가 없습니다.
@@ -565,7 +570,7 @@ namespace Jupiter.Repository.ExceptionHandle
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -590,7 +595,7 @@ namespace Jupiter.Repository.ExceptionHandle
             {
                 OnExceptionIdChanging(value);
                 ReportPropertyChanging("ExceptionId");
-                _ExceptionId = StructuralObject.SetValidValue(value);
+                _ExceptionId = StructuralObject.SetValidValue(value, "ExceptionId");
                 ReportPropertyChanged("ExceptionId");
                 OnExceptionIdChanged();
             }
@@ -614,7 +619,7 @@ namespace Jupiter.Repository.ExceptionHandle
             {
                 OnUserNameChanging(value);
                 ReportPropertyChanging("UserName");
-                _UserName = StructuralObject.SetValidValue(value, false);
+                _UserName = StructuralObject.SetValidValue(value, false, "UserName");
                 ReportPropertyChanged("UserName");
                 OnUserNameChanged();
             }
@@ -638,7 +643,7 @@ namespace Jupiter.Repository.ExceptionHandle
             {
                 OnCommentChanging(value);
                 ReportPropertyChanging("Comment");
-                _Comment = StructuralObject.SetValidValue(value, false);
+                _Comment = StructuralObject.SetValidValue(value, false, "Comment");
                 ReportPropertyChanged("Comment");
                 OnCommentChanged();
             }
@@ -662,7 +667,7 @@ namespace Jupiter.Repository.ExceptionHandle
             {
                 OnCreateDateChanging(value);
                 ReportPropertyChanging("CreateDate");
-                _CreateDate = StructuralObject.SetValidValue(value);
+                _CreateDate = StructuralObject.SetValidValue(value, "CreateDate");
                 ReportPropertyChanged("CreateDate");
                 OnCreateDateChanged();
             }
@@ -672,7 +677,7 @@ namespace Jupiter.Repository.ExceptionHandle
         partial void OnCreateDateChanged();
 
         #endregion
-    
+
         #region 탐색 속성
     
         /// <summary>
@@ -714,6 +719,7 @@ namespace Jupiter.Repository.ExceptionHandle
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -742,7 +748,8 @@ namespace Jupiter.Repository.ExceptionHandle
         }
 
         #endregion
-        #region 기본 속성
+
+        #region 단순 속성
     
         /// <summary>
         /// 사용 가능한 메타데이터 설명서가 없습니다.
@@ -761,7 +768,7 @@ namespace Jupiter.Repository.ExceptionHandle
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -786,7 +793,7 @@ namespace Jupiter.Repository.ExceptionHandle
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -810,7 +817,7 @@ namespace Jupiter.Repository.ExceptionHandle
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, false);
+                _Description = StructuralObject.SetValidValue(value, false, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -820,7 +827,7 @@ namespace Jupiter.Repository.ExceptionHandle
         partial void OnDescriptionChanged();
 
         #endregion
-    
+
         #region 탐색 속성
     
         /// <summary>
@@ -846,8 +853,9 @@ namespace Jupiter.Repository.ExceptionHandle
         }
 
         #endregion
+
     }
 
     #endregion
-    
+
 }

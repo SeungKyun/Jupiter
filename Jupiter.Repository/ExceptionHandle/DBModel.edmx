@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="JupiterModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+      <Schema Namespace="JupiterModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="JupiterModelStoreContainer">
-          <EntitySet Name="common_Exceptions" EntityType="JupiterModel.Store.common_Exceptions" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="common_Exceptions_Handle" EntityType="JupiterModel.Store.common_Exceptions_Handle" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="common_Exceptions_State" EntityType="JupiterModel.Store.common_Exceptions_State" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="common_Exceptions" EntityType="JupiterModel.Store.common_Exceptions" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="common_Exceptions_Handle" EntityType="JupiterModel.Store.common_Exceptions_Handle" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="common_Exceptions_State" EntityType="JupiterModel.Store.common_Exceptions_State" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <AssociationSet Name="FK_common_Exceptions_common_Exceptions_State" Association="JupiterModel.Store.FK_common_Exceptions_common_Exceptions_State">
             <End Role="common_Exceptions_State" EntitySet="common_Exceptions_State" />
             <End Role="common_Exceptions" EntitySet="common_Exceptions" />
@@ -80,8 +80,8 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="JupiterModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="ExceptionHandleEntities" annotation:LazyLoadingEnabled="true">
+      <Schema Namespace="JupiterModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ExceptionHandleEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
           <EntitySet Name="common_Exceptions" EntityType="JupiterModel.common_Exceptions" />
           <EntitySet Name="common_Exceptions_Handle" EntityType="JupiterModel.common_Exceptions_Handle" />
           <EntitySet Name="common_Exceptions_State" EntityType="JupiterModel.common_Exceptions_State" />
@@ -98,7 +98,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Message" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Source" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="StackTrace" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
@@ -116,7 +116,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="ExceptionId" Type="Int64" Nullable="false" />
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
           <Property Name="Comment" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
@@ -160,7 +160,7 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="JupiterModelStoreContainer" CdmEntityContainer="ExceptionHandleEntities">
           <EntitySetMapping Name="common_Exceptions"><EntityTypeMapping TypeName="JupiterModel.common_Exceptions"><MappingFragment StoreEntitySet="common_Exceptions">
             <ScalarProperty Name="Id" ColumnName="Id" />
@@ -192,7 +192,7 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />

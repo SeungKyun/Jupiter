@@ -32,7 +32,10 @@ namespace Jupiter.Repository.ExceptionHandle
         /// <param name="filterContext">MVC Framework의 예외정보 컨텍스트</param>
         public override void OnException(ExceptionContext filterContext)
         {
-            new ExceptionRepository().WriteToDB(filterContext);
+            try
+            {
+                new ExceptionRepository().WriteToDB(filterContext);
+            } catch { }
 
             base.OnException(filterContext);
         }

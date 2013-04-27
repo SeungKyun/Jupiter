@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jupiter", "Jupiter\Jupiter.csproj", "{A8E7C27E-7E58-484E-9535-5EDBEB59D18F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jupiter.Tests", "Jupiter.Tests\Jupiter.Tests.csproj", "{5E6AF97C-F2A2-4EAB-B132-F17B6517D13D}"

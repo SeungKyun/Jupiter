@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM 관계 메타데이터
@@ -190,6 +191,7 @@ namespace Jupiter.Repository.Account
         private ObjectSet<aspnet_Users> _aspnet_Users;
 
         #endregion
+
         #region AddTo 메서드
     
         /// <summary>
@@ -249,6 +251,7 @@ namespace Jupiter.Repository.Account
         }
 
         #endregion
+
         #region 함수 가져오기
     
         /// <summary>
@@ -334,11 +337,11 @@ namespace Jupiter.Repository.Account
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region 엔터티
     
     /// <summary>
@@ -367,7 +370,8 @@ namespace Jupiter.Repository.Account
         }
 
         #endregion
-        #region 기본 속성
+
+        #region 단순 속성
     
         /// <summary>
         /// 사용 가능한 메타데이터 설명서가 없습니다.
@@ -384,7 +388,7 @@ namespace Jupiter.Repository.Account
             {
                 OnApplicationNameChanging(value);
                 ReportPropertyChanging("ApplicationName");
-                _ApplicationName = StructuralObject.SetValidValue(value, false);
+                _ApplicationName = StructuralObject.SetValidValue(value, false, "ApplicationName");
                 ReportPropertyChanged("ApplicationName");
                 OnApplicationNameChanged();
             }
@@ -408,7 +412,7 @@ namespace Jupiter.Repository.Account
             {
                 OnLoweredApplicationNameChanging(value);
                 ReportPropertyChanging("LoweredApplicationName");
-                _LoweredApplicationName = StructuralObject.SetValidValue(value, false);
+                _LoweredApplicationName = StructuralObject.SetValidValue(value, false, "LoweredApplicationName");
                 ReportPropertyChanged("LoweredApplicationName");
                 OnLoweredApplicationNameChanged();
             }
@@ -434,7 +438,7 @@ namespace Jupiter.Repository.Account
                 {
                     OnApplicationIdChanging(value);
                     ReportPropertyChanging("ApplicationId");
-                    _ApplicationId = StructuralObject.SetValidValue(value);
+                    _ApplicationId = StructuralObject.SetValidValue(value, "ApplicationId");
                     ReportPropertyChanged("ApplicationId");
                     OnApplicationIdChanged();
                 }
@@ -459,7 +463,7 @@ namespace Jupiter.Repository.Account
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, true);
+                _Description = StructuralObject.SetValidValue(value, true, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -469,7 +473,7 @@ namespace Jupiter.Repository.Account
         partial void OnDescriptionChanged();
 
         #endregion
-    
+
         #region 탐색 속성
     
         /// <summary>
@@ -539,6 +543,7 @@ namespace Jupiter.Repository.Account
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -591,7 +596,8 @@ namespace Jupiter.Repository.Account
         }
 
         #endregion
-        #region 기본 속성
+
+        #region 단순 속성
     
         /// <summary>
         /// 사용 가능한 메타데이터 설명서가 없습니다.
@@ -608,7 +614,7 @@ namespace Jupiter.Repository.Account
             {
                 OnApplicationIdChanging(value);
                 ReportPropertyChanging("ApplicationId");
-                _ApplicationId = StructuralObject.SetValidValue(value);
+                _ApplicationId = StructuralObject.SetValidValue(value, "ApplicationId");
                 ReportPropertyChanged("ApplicationId");
                 OnApplicationIdChanged();
             }
@@ -634,7 +640,7 @@ namespace Jupiter.Repository.Account
                 {
                     OnUserIdChanging(value);
                     ReportPropertyChanging("UserId");
-                    _UserId = StructuralObject.SetValidValue(value);
+                    _UserId = StructuralObject.SetValidValue(value, "UserId");
                     ReportPropertyChanged("UserId");
                     OnUserIdChanged();
                 }
@@ -659,7 +665,7 @@ namespace Jupiter.Repository.Account
             {
                 OnPasswordChanging(value);
                 ReportPropertyChanging("Password");
-                _Password = StructuralObject.SetValidValue(value, false);
+                _Password = StructuralObject.SetValidValue(value, false, "Password");
                 ReportPropertyChanged("Password");
                 OnPasswordChanged();
             }
@@ -683,7 +689,7 @@ namespace Jupiter.Repository.Account
             {
                 OnPasswordFormatChanging(value);
                 ReportPropertyChanging("PasswordFormat");
-                _PasswordFormat = StructuralObject.SetValidValue(value);
+                _PasswordFormat = StructuralObject.SetValidValue(value, "PasswordFormat");
                 ReportPropertyChanged("PasswordFormat");
                 OnPasswordFormatChanged();
             }
@@ -707,7 +713,7 @@ namespace Jupiter.Repository.Account
             {
                 OnPasswordSaltChanging(value);
                 ReportPropertyChanging("PasswordSalt");
-                _PasswordSalt = StructuralObject.SetValidValue(value, false);
+                _PasswordSalt = StructuralObject.SetValidValue(value, false, "PasswordSalt");
                 ReportPropertyChanged("PasswordSalt");
                 OnPasswordSaltChanged();
             }
@@ -731,7 +737,7 @@ namespace Jupiter.Repository.Account
             {
                 OnMobilePINChanging(value);
                 ReportPropertyChanging("MobilePIN");
-                _MobilePIN = StructuralObject.SetValidValue(value, true);
+                _MobilePIN = StructuralObject.SetValidValue(value, true, "MobilePIN");
                 ReportPropertyChanged("MobilePIN");
                 OnMobilePINChanged();
             }
@@ -755,7 +761,7 @@ namespace Jupiter.Repository.Account
             {
                 OnEmailChanging(value);
                 ReportPropertyChanging("Email");
-                _Email = StructuralObject.SetValidValue(value, true);
+                _Email = StructuralObject.SetValidValue(value, true, "Email");
                 ReportPropertyChanged("Email");
                 OnEmailChanged();
             }
@@ -779,7 +785,7 @@ namespace Jupiter.Repository.Account
             {
                 OnLoweredEmailChanging(value);
                 ReportPropertyChanging("LoweredEmail");
-                _LoweredEmail = StructuralObject.SetValidValue(value, true);
+                _LoweredEmail = StructuralObject.SetValidValue(value, true, "LoweredEmail");
                 ReportPropertyChanged("LoweredEmail");
                 OnLoweredEmailChanged();
             }
@@ -803,7 +809,7 @@ namespace Jupiter.Repository.Account
             {
                 OnPasswordQuestionChanging(value);
                 ReportPropertyChanging("PasswordQuestion");
-                _PasswordQuestion = StructuralObject.SetValidValue(value, true);
+                _PasswordQuestion = StructuralObject.SetValidValue(value, true, "PasswordQuestion");
                 ReportPropertyChanged("PasswordQuestion");
                 OnPasswordQuestionChanged();
             }
@@ -827,7 +833,7 @@ namespace Jupiter.Repository.Account
             {
                 OnPasswordAnswerChanging(value);
                 ReportPropertyChanging("PasswordAnswer");
-                _PasswordAnswer = StructuralObject.SetValidValue(value, true);
+                _PasswordAnswer = StructuralObject.SetValidValue(value, true, "PasswordAnswer");
                 ReportPropertyChanged("PasswordAnswer");
                 OnPasswordAnswerChanged();
             }
@@ -851,7 +857,7 @@ namespace Jupiter.Repository.Account
             {
                 OnIsApprovedChanging(value);
                 ReportPropertyChanging("IsApproved");
-                _IsApproved = StructuralObject.SetValidValue(value);
+                _IsApproved = StructuralObject.SetValidValue(value, "IsApproved");
                 ReportPropertyChanged("IsApproved");
                 OnIsApprovedChanged();
             }
@@ -875,7 +881,7 @@ namespace Jupiter.Repository.Account
             {
                 OnIsLockedOutChanging(value);
                 ReportPropertyChanging("IsLockedOut");
-                _IsLockedOut = StructuralObject.SetValidValue(value);
+                _IsLockedOut = StructuralObject.SetValidValue(value, "IsLockedOut");
                 ReportPropertyChanged("IsLockedOut");
                 OnIsLockedOutChanged();
             }
@@ -899,7 +905,7 @@ namespace Jupiter.Repository.Account
             {
                 OnCreateDateChanging(value);
                 ReportPropertyChanging("CreateDate");
-                _CreateDate = StructuralObject.SetValidValue(value);
+                _CreateDate = StructuralObject.SetValidValue(value, "CreateDate");
                 ReportPropertyChanged("CreateDate");
                 OnCreateDateChanged();
             }
@@ -923,7 +929,7 @@ namespace Jupiter.Repository.Account
             {
                 OnLastLoginDateChanging(value);
                 ReportPropertyChanging("LastLoginDate");
-                _LastLoginDate = StructuralObject.SetValidValue(value);
+                _LastLoginDate = StructuralObject.SetValidValue(value, "LastLoginDate");
                 ReportPropertyChanged("LastLoginDate");
                 OnLastLoginDateChanged();
             }
@@ -947,7 +953,7 @@ namespace Jupiter.Repository.Account
             {
                 OnLastPasswordChangedDateChanging(value);
                 ReportPropertyChanging("LastPasswordChangedDate");
-                _LastPasswordChangedDate = StructuralObject.SetValidValue(value);
+                _LastPasswordChangedDate = StructuralObject.SetValidValue(value, "LastPasswordChangedDate");
                 ReportPropertyChanged("LastPasswordChangedDate");
                 OnLastPasswordChangedDateChanged();
             }
@@ -971,7 +977,7 @@ namespace Jupiter.Repository.Account
             {
                 OnLastLockoutDateChanging(value);
                 ReportPropertyChanging("LastLockoutDate");
-                _LastLockoutDate = StructuralObject.SetValidValue(value);
+                _LastLockoutDate = StructuralObject.SetValidValue(value, "LastLockoutDate");
                 ReportPropertyChanged("LastLockoutDate");
                 OnLastLockoutDateChanged();
             }
@@ -995,7 +1001,7 @@ namespace Jupiter.Repository.Account
             {
                 OnFailedPasswordAttemptCountChanging(value);
                 ReportPropertyChanging("FailedPasswordAttemptCount");
-                _FailedPasswordAttemptCount = StructuralObject.SetValidValue(value);
+                _FailedPasswordAttemptCount = StructuralObject.SetValidValue(value, "FailedPasswordAttemptCount");
                 ReportPropertyChanged("FailedPasswordAttemptCount");
                 OnFailedPasswordAttemptCountChanged();
             }
@@ -1019,7 +1025,7 @@ namespace Jupiter.Repository.Account
             {
                 OnFailedPasswordAttemptWindowStartChanging(value);
                 ReportPropertyChanging("FailedPasswordAttemptWindowStart");
-                _FailedPasswordAttemptWindowStart = StructuralObject.SetValidValue(value);
+                _FailedPasswordAttemptWindowStart = StructuralObject.SetValidValue(value, "FailedPasswordAttemptWindowStart");
                 ReportPropertyChanged("FailedPasswordAttemptWindowStart");
                 OnFailedPasswordAttemptWindowStartChanged();
             }
@@ -1043,7 +1049,7 @@ namespace Jupiter.Repository.Account
             {
                 OnFailedPasswordAnswerAttemptCountChanging(value);
                 ReportPropertyChanging("FailedPasswordAnswerAttemptCount");
-                _FailedPasswordAnswerAttemptCount = StructuralObject.SetValidValue(value);
+                _FailedPasswordAnswerAttemptCount = StructuralObject.SetValidValue(value, "FailedPasswordAnswerAttemptCount");
                 ReportPropertyChanged("FailedPasswordAnswerAttemptCount");
                 OnFailedPasswordAnswerAttemptCountChanged();
             }
@@ -1067,7 +1073,7 @@ namespace Jupiter.Repository.Account
             {
                 OnFailedPasswordAnswerAttemptWindowStartChanging(value);
                 ReportPropertyChanging("FailedPasswordAnswerAttemptWindowStart");
-                _FailedPasswordAnswerAttemptWindowStart = StructuralObject.SetValidValue(value);
+                _FailedPasswordAnswerAttemptWindowStart = StructuralObject.SetValidValue(value, "FailedPasswordAnswerAttemptWindowStart");
                 ReportPropertyChanged("FailedPasswordAnswerAttemptWindowStart");
                 OnFailedPasswordAnswerAttemptWindowStartChanged();
             }
@@ -1091,7 +1097,7 @@ namespace Jupiter.Repository.Account
             {
                 OnCommentChanging(value);
                 ReportPropertyChanging("Comment");
-                _Comment = StructuralObject.SetValidValue(value, true);
+                _Comment = StructuralObject.SetValidValue(value, true, "Comment");
                 ReportPropertyChanged("Comment");
                 OnCommentChanged();
             }
@@ -1101,7 +1107,7 @@ namespace Jupiter.Repository.Account
         partial void OnCommentChanged();
 
         #endregion
-    
+
         #region 탐색 속성
     
         /// <summary>
@@ -1219,6 +1225,7 @@ namespace Jupiter.Repository.Account
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1247,7 +1254,8 @@ namespace Jupiter.Repository.Account
         }
 
         #endregion
-        #region 기본 속성
+
+        #region 단순 속성
     
         /// <summary>
         /// 사용 가능한 메타데이터 설명서가 없습니다.
@@ -1266,7 +1274,7 @@ namespace Jupiter.Repository.Account
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -1291,7 +1299,7 @@ namespace Jupiter.Repository.Account
             {
                 OnGradeIdChanging(value);
                 ReportPropertyChanging("GradeId");
-                _GradeId = StructuralObject.SetValidValue(value);
+                _GradeId = StructuralObject.SetValidValue(value, "GradeId");
                 ReportPropertyChanged("GradeId");
                 OnGradeIdChanged();
             }
@@ -1315,7 +1323,7 @@ namespace Jupiter.Repository.Account
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -1325,7 +1333,7 @@ namespace Jupiter.Repository.Account
         partial void OnNameChanged();
 
         #endregion
-    
+
         #region 탐색 속성
     
         /// <summary>
@@ -1389,6 +1397,7 @@ namespace Jupiter.Repository.Account
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1413,7 +1422,8 @@ namespace Jupiter.Repository.Account
         }
 
         #endregion
-        #region 기본 속성
+
+        #region 단순 속성
     
         /// <summary>
         /// 사용 가능한 메타데이터 설명서가 없습니다.
@@ -1432,7 +1442,7 @@ namespace Jupiter.Repository.Account
                 {
                     OnUserIdChanging(value);
                     ReportPropertyChanging("UserId");
-                    _UserId = StructuralObject.SetValidValue(value);
+                    _UserId = StructuralObject.SetValidValue(value, "UserId");
                     ReportPropertyChanged("UserId");
                     OnUserIdChanged();
                 }
@@ -1457,7 +1467,7 @@ namespace Jupiter.Repository.Account
             {
                 OnClassIdChanging(value);
                 ReportPropertyChanging("ClassId");
-                _ClassId = StructuralObject.SetValidValue(value);
+                _ClassId = StructuralObject.SetValidValue(value, "ClassId");
                 ReportPropertyChanged("ClassId");
                 OnClassIdChanged();
             }
@@ -1481,7 +1491,7 @@ namespace Jupiter.Repository.Account
             {
                 OnPostChanging(value);
                 ReportPropertyChanging("Post");
-                _Post = StructuralObject.SetValidValue(value, true);
+                _Post = StructuralObject.SetValidValue(value, true, "Post");
                 ReportPropertyChanged("Post");
                 OnPostChanged();
             }
@@ -1505,7 +1515,7 @@ namespace Jupiter.Repository.Account
             {
                 OnAddressChanging(value);
                 ReportPropertyChanging("Address");
-                _Address = StructuralObject.SetValidValue(value, true);
+                _Address = StructuralObject.SetValidValue(value, true, "Address");
                 ReportPropertyChanged("Address");
                 OnAddressChanged();
             }
@@ -1529,7 +1539,7 @@ namespace Jupiter.Repository.Account
             {
                 OnSchoolNameChanging(value);
                 ReportPropertyChanging("SchoolName");
-                _SchoolName = StructuralObject.SetValidValue(value, true);
+                _SchoolName = StructuralObject.SetValidValue(value, true, "SchoolName");
                 ReportPropertyChanged("SchoolName");
                 OnSchoolNameChanged();
             }
@@ -1553,7 +1563,7 @@ namespace Jupiter.Repository.Account
             {
                 OnSchoolGradeChanging(value);
                 ReportPropertyChanging("SchoolGrade");
-                _SchoolGrade = StructuralObject.SetValidValue(value, true);
+                _SchoolGrade = StructuralObject.SetValidValue(value, true, "SchoolGrade");
                 ReportPropertyChanged("SchoolGrade");
                 OnSchoolGradeChanged();
             }
@@ -1577,7 +1587,7 @@ namespace Jupiter.Repository.Account
             {
                 OnHomePhoneChanging(value);
                 ReportPropertyChanging("HomePhone");
-                _HomePhone = StructuralObject.SetValidValue(value, true);
+                _HomePhone = StructuralObject.SetValidValue(value, true, "HomePhone");
                 ReportPropertyChanged("HomePhone");
                 OnHomePhoneChanged();
             }
@@ -1601,7 +1611,7 @@ namespace Jupiter.Repository.Account
             {
                 OnChurchNameChanging(value);
                 ReportPropertyChanging("ChurchName");
-                _ChurchName = StructuralObject.SetValidValue(value, true);
+                _ChurchName = StructuralObject.SetValidValue(value, true, "ChurchName");
                 ReportPropertyChanged("ChurchName");
                 OnChurchNameChanged();
             }
@@ -1625,7 +1635,7 @@ namespace Jupiter.Repository.Account
             {
                 OnChurchRoleChanging(value);
                 ReportPropertyChanging("ChurchRole");
-                _ChurchRole = StructuralObject.SetValidValue(value, true);
+                _ChurchRole = StructuralObject.SetValidValue(value, true, "ChurchRole");
                 ReportPropertyChanged("ChurchRole");
                 OnChurchRoleChanged();
             }
@@ -1649,7 +1659,7 @@ namespace Jupiter.Repository.Account
             {
                 OnGenderChanging(value);
                 ReportPropertyChanging("Gender");
-                _Gender = StructuralObject.SetValidValue(value, true);
+                _Gender = StructuralObject.SetValidValue(value, true, "Gender");
                 ReportPropertyChanged("Gender");
                 OnGenderChanged();
             }
@@ -1659,7 +1669,7 @@ namespace Jupiter.Repository.Account
         partial void OnGenderChanged();
 
         #endregion
-    
+
         #region 탐색 속성
     
         /// <summary>
@@ -1739,6 +1749,7 @@ namespace Jupiter.Repository.Account
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1765,7 +1776,8 @@ namespace Jupiter.Repository.Account
         }
 
         #endregion
-        #region 기본 속성
+
+        #region 단순 속성
     
         /// <summary>
         /// 사용 가능한 메타데이터 설명서가 없습니다.
@@ -1784,7 +1796,7 @@ namespace Jupiter.Repository.Account
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -1809,7 +1821,7 @@ namespace Jupiter.Repository.Account
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -1819,7 +1831,7 @@ namespace Jupiter.Repository.Account
         partial void OnNameChanged();
 
         #endregion
-    
+
         #region 탐색 속성
     
         /// <summary>
@@ -1845,6 +1857,7 @@ namespace Jupiter.Repository.Account
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -1875,7 +1888,8 @@ namespace Jupiter.Repository.Account
         }
 
         #endregion
-        #region 기본 속성
+
+        #region 단순 속성
     
         /// <summary>
         /// 사용 가능한 메타데이터 설명서가 없습니다.
@@ -1892,7 +1906,7 @@ namespace Jupiter.Repository.Account
             {
                 OnApplicationIdChanging(value);
                 ReportPropertyChanging("ApplicationId");
-                _ApplicationId = StructuralObject.SetValidValue(value);
+                _ApplicationId = StructuralObject.SetValidValue(value, "ApplicationId");
                 ReportPropertyChanged("ApplicationId");
                 OnApplicationIdChanged();
             }
@@ -1918,7 +1932,7 @@ namespace Jupiter.Repository.Account
                 {
                     OnRoleIdChanging(value);
                     ReportPropertyChanging("RoleId");
-                    _RoleId = StructuralObject.SetValidValue(value);
+                    _RoleId = StructuralObject.SetValidValue(value, "RoleId");
                     ReportPropertyChanged("RoleId");
                     OnRoleIdChanged();
                 }
@@ -1943,7 +1957,7 @@ namespace Jupiter.Repository.Account
             {
                 OnRoleNameChanging(value);
                 ReportPropertyChanging("RoleName");
-                _RoleName = StructuralObject.SetValidValue(value, false);
+                _RoleName = StructuralObject.SetValidValue(value, false, "RoleName");
                 ReportPropertyChanged("RoleName");
                 OnRoleNameChanged();
             }
@@ -1967,7 +1981,7 @@ namespace Jupiter.Repository.Account
             {
                 OnLoweredRoleNameChanging(value);
                 ReportPropertyChanging("LoweredRoleName");
-                _LoweredRoleName = StructuralObject.SetValidValue(value, false);
+                _LoweredRoleName = StructuralObject.SetValidValue(value, false, "LoweredRoleName");
                 ReportPropertyChanged("LoweredRoleName");
                 OnLoweredRoleNameChanged();
             }
@@ -1991,7 +2005,7 @@ namespace Jupiter.Repository.Account
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, true);
+                _Description = StructuralObject.SetValidValue(value, true, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -2001,7 +2015,7 @@ namespace Jupiter.Repository.Account
         partial void OnDescriptionChanged();
 
         #endregion
-    
+
         #region 탐색 속성
     
         /// <summary>
@@ -2065,6 +2079,7 @@ namespace Jupiter.Repository.Account
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2101,7 +2116,8 @@ namespace Jupiter.Repository.Account
         }
 
         #endregion
-        #region 기본 속성
+
+        #region 단순 속성
     
         /// <summary>
         /// 사용 가능한 메타데이터 설명서가 없습니다.
@@ -2118,7 +2134,7 @@ namespace Jupiter.Repository.Account
             {
                 OnApplicationIdChanging(value);
                 ReportPropertyChanging("ApplicationId");
-                _ApplicationId = StructuralObject.SetValidValue(value);
+                _ApplicationId = StructuralObject.SetValidValue(value, "ApplicationId");
                 ReportPropertyChanged("ApplicationId");
                 OnApplicationIdChanged();
             }
@@ -2144,7 +2160,7 @@ namespace Jupiter.Repository.Account
                 {
                     OnUserIdChanging(value);
                     ReportPropertyChanging("UserId");
-                    _UserId = StructuralObject.SetValidValue(value);
+                    _UserId = StructuralObject.SetValidValue(value, "UserId");
                     ReportPropertyChanged("UserId");
                     OnUserIdChanged();
                 }
@@ -2169,7 +2185,7 @@ namespace Jupiter.Repository.Account
             {
                 OnUserNameChanging(value);
                 ReportPropertyChanging("UserName");
-                _UserName = StructuralObject.SetValidValue(value, false);
+                _UserName = StructuralObject.SetValidValue(value, false, "UserName");
                 ReportPropertyChanged("UserName");
                 OnUserNameChanged();
             }
@@ -2193,7 +2209,7 @@ namespace Jupiter.Repository.Account
             {
                 OnLoweredUserNameChanging(value);
                 ReportPropertyChanging("LoweredUserName");
-                _LoweredUserName = StructuralObject.SetValidValue(value, false);
+                _LoweredUserName = StructuralObject.SetValidValue(value, false, "LoweredUserName");
                 ReportPropertyChanged("LoweredUserName");
                 OnLoweredUserNameChanged();
             }
@@ -2217,7 +2233,7 @@ namespace Jupiter.Repository.Account
             {
                 OnRealNameChanging(value);
                 ReportPropertyChanging("RealName");
-                _RealName = StructuralObject.SetValidValue(value, false);
+                _RealName = StructuralObject.SetValidValue(value, false, "RealName");
                 ReportPropertyChanged("RealName");
                 OnRealNameChanged();
             }
@@ -2241,7 +2257,7 @@ namespace Jupiter.Repository.Account
             {
                 OnMobileAliasChanging(value);
                 ReportPropertyChanging("MobileAlias");
-                _MobileAlias = StructuralObject.SetValidValue(value, true);
+                _MobileAlias = StructuralObject.SetValidValue(value, true, "MobileAlias");
                 ReportPropertyChanged("MobileAlias");
                 OnMobileAliasChanged();
             }
@@ -2265,7 +2281,7 @@ namespace Jupiter.Repository.Account
             {
                 OnIsAnonymousChanging(value);
                 ReportPropertyChanging("IsAnonymous");
-                _IsAnonymous = StructuralObject.SetValidValue(value);
+                _IsAnonymous = StructuralObject.SetValidValue(value, "IsAnonymous");
                 ReportPropertyChanged("IsAnonymous");
                 OnIsAnonymousChanged();
             }
@@ -2289,7 +2305,7 @@ namespace Jupiter.Repository.Account
             {
                 OnLastActivityDateChanging(value);
                 ReportPropertyChanging("LastActivityDate");
-                _LastActivityDate = StructuralObject.SetValidValue(value);
+                _LastActivityDate = StructuralObject.SetValidValue(value, "LastActivityDate");
                 ReportPropertyChanged("LastActivityDate");
                 OnLastActivityDateChanged();
             }
@@ -2299,7 +2315,7 @@ namespace Jupiter.Repository.Account
         partial void OnLastActivityDateChanged();
 
         #endregion
-    
+
         #region 탐색 속성
     
         /// <summary>
@@ -2401,8 +2417,9 @@ namespace Jupiter.Repository.Account
         }
 
         #endregion
+
     }
 
     #endregion
-    
+
 }
