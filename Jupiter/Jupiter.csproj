@@ -131,6 +131,22 @@
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Views\AccountAdmin\Create.aspx" />
+    <Content Include="Views\AccountAdmin\Delete.aspx" />
+    <Content Include="Views\AccountAdmin\Details.aspx" />
+    <Content Include="Views\AccountAdmin\Edit.aspx" />
+    <Content Include="Views\AccountAdmin\Index.aspx" />
+    <Content Include="Views\AccountAdmin\Indexaaa.aspx" />
+    <Content Include="Views\AccountAdmin\List.aspx" />
+    <Content Include="Views\ExamAdmin\Answers.ascx" />
+    <Content Include="Views\ExamAdmin\Create.aspx" />
+    <Content Include="Views\ExamAdmin\Details.aspx" />
+    <Content Include="Views\ExamAdmin\Index.aspx" />
+    <Content Include="Views\ExamAdmin\Users.ascx" />
+    <Content Include="Views\Exam\Details.aspx" />
+    <Content Include="Views\Exam\Index.aspx" />
+    <Content Include="Views\Exam\Result.aspx" />
+    <Content Include="Views\Exam\UserExamResult.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -222,7 +238,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>6821</DevelopmentServerPort>
+          <DevelopmentServerPort>3775</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
